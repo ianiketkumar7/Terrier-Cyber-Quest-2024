@@ -1,0 +1,78 @@
+/* static/styles.css */
+body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.input-group {
+    margin: 20px 0;
+    text-align: center;
+}
+
+input[type="file"], input[type="text"] {
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    box-sizing: border-box;
+    color: #333;
+}
+
+input[type="file"] {
+    font-size: 14px; /* Change the font size for better visibility */
+    font-weight: bold; /* Make it bold to enhance visibility */
+    color: #333; /* Darker color for visibility */
+}
+
+button {
+    padding: 12px 30px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Additional styles for better aesthetics */
+label {
+    font-weight: bold;
+    color: #333;
+}
+
+#result {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,0.1);
+    color: #333;
+}
+

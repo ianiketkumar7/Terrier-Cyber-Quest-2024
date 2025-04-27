@@ -1,0 +1,489 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: rgb(204, 218, 235);
+    scroll-behavior: smooth;
+}
+
+.navbar {
+    position: relative;
+}
+
+.links {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(0, 42, 42);
+    width: 15rem;
+    min-height: 100vh;
+    padding: 20px;
+    gap: 20px;
+    translate: -240px 0;
+}
+
+.setLinks {
+    display: flex;
+}
+
+.link-item {
+    font-size: 20px;
+    color: white;
+    font-family: Poppins;
+    position: relative; /* Needed for the ::after pseudo-element */
+    text-decoration: none;
+    padding-bottom: 5px;
+}
+
+.link-item::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: white;
+    transition: width 0.3s ease-in-out;
+}
+
+.link-item:hover::after {
+    width: 100%;
+}
+
+/* Button and Close */
+.open-button {
+    padding: 10px;
+    float: right;
+    margin-right: 20px;
+    opacity: 1;
+}
+
+.setButton {
+    opacity: 0;
+}
+
+.close-button, .open-button {
+    background-color: transparent;
+    border: none;
+    border-radius: 100%;
+    cursor: grab;
+}
+
+.image {
+    width: 40px;
+}
+
+.setImageFirst {
+    animation: rotation1 1s ease-out;
+}
+
+@keyframes rotation1 {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.setImageLast {
+    animation: rotation2 1s ease-in-out;
+}
+
+@keyframes rotation2 {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+.header {
+    text-align: left;
+    padding: 10px 10px;
+    margin-left: 20px;
+    max-width: 100%;
+    background-color: rgb(204, 218, 235);
+}
+
+.header h1 {
+    font-size: 40px;
+    font-family: Poppins;
+}
+
+.line{
+    border: none;
+    height: 1px;
+    width: 80%;
+    background-color: rgba(8, 27, 26, 0.463);
+    margin: auto;
+}
+
+
+.hero-section {
+    height: 100vh;
+    background-color: rgb(204, 218, 235);
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-section h1{
+    text-align: center;
+    font-family: Poppins;
+    font-size: 60px;
+    margin-top: 40px;
+}
+
+.video-frame{
+    border: 1px solid transparent;
+    border-radius: 5px;
+    width: 50%;
+    height: 480px;
+    background-color: aliceblue;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    padding: 8px;
+}
+
+
+.whatSection {
+    height: 200vh;
+    
+}
+
+.whatInfo {
+    text-align: center;
+}
+
+.whatInfo h1{
+    font-size: 50px;
+    font-family: Poppins;
+}
+
+.whatInfo h2{
+    font-size: 70px;
+    font-family: Poppins;
+    border-left: 100px solid rgb(0, 42, 42);
+    max-width: 600px;
+    margin-top: 50px;
+}
+
+.whatLine {
+    height: 2px;
+    width: 20%;
+    margin: auto;
+    background-color: rgb(0, 42, 42);
+}
+
+
+.infoDiv {
+    display: flex;
+    margin-top: 50px;
+    flex-direction:column;
+    justify-content :center;
+    align-items: center;
+}
+
+.subInfo1{
+    height: auto;
+    width: 90%;
+    background-color: aliceblue;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    justify-items: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.subInfo1 p{
+    font-size: 16px;
+    font-family: Poppins;
+}
+
+
+.headingSubInfo{
+    color: rgb(114, 10, 219);
+    font: 800;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: poppins;
+    text-decoration:solid;
+    border-left: 4px solid rgb(0, 42, 42);
+    padding: 5px;
+}
+
+.subHeadSubInfo{
+    color: rgb(0, 42, 42);
+    font-size: 20px;
+    font-family: Poppins;
+}
+
+.subInfo2{
+    position: relative;
+    height: auto;
+    width: 60%;
+    background-color: aliceblue;
+    border: 1px solid transparent;
+    border-radius: 10px;
+}
+
+.carousel {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+/* Slide Styles */
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Sliding animation */
+    /* width: 300%;  */
+}
+
+.slide {
+    flex: 1 0 100%; /* Ensure each slide takes full width */
+}
+
+/* Caption Styling */
+.carousel-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+/* Navigation Buttons */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Dots/Indicators */
+.dots {
+    text-align: center;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.active-dot {
+    background-color: #717171;
+}
+
+
+.whatInfo2 h2{
+    font-size: 70px;
+    font-family: Poppins;
+    border-left: 100px solid rgb(0, 42, 42);
+    max-width: 600px;
+    margin-top: 50px;
+    padding: 10px;
+}
+
+.whatInfo2 span{
+    margin-left: 120px;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: Poppins;
+    color: rgba(227, 95, 95, 0.911);
+}
+
+.firstChar {
+    font-size: 20px;
+    color: rgba(227, 95, 95, 0.911);
+    font-weight: 600;
+}
+
+
+/* Try Now Button  */
+
+.button-49,
+.button-49:after {
+  width: 150px;
+  height: 76px;
+  line-height: 78px;
+  font-size: 40px;
+  font-family: Poppins;
+  background: linear-gradient(45deg, transparent 5%, #FF013C 5%);
+  border: 0;
+  color: #fff;
+  letter-spacing: 3px;
+  box-shadow: 6px 0px 0px rgb(0, 42, 42);
+  outline: transparent;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-49:after {
+  --slice-0: inset(50% 50% 50% 50%);
+  --slice-1: inset(80% -6px 0 0);
+  --slice-2: inset(50% -6px 30% 0);
+  --slice-3: inset(10% -6px 85% 0);
+  --slice-4: inset(40% -6px 43% 0);
+  --slice-5: inset(80% -6px 5% 0);
+  
+  content: 'ALTERNATE TEXT';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 3%, #00E6F6 3%, #00E6F6 5%, #FF013C 5%);
+  text-shadow: -3px -3px 0px #F8F005, 3px 3px 0px #00E6F6;
+  clip-path: var(--slice-0);
+}
+
+.button-49:hover:after {
+  animation: 1s glitch;
+  animation-timing-function: steps(2, end);
+}
+
+@keyframes glitch {
+  0% {
+    clip-path: var(--slice-1);
+    transform: translate(-20px, -10px);
+  }
+  10% {
+    clip-path: var(--slice-3);
+    transform: translate(10px, 10px);
+  }
+  20% {
+    clip-path: var(--slice-1);
+    transform: translate(-10px, 10px);
+  }
+  30% {
+    clip-path: var(--slice-3);
+    transform: translate(0px, 5px);
+  }
+  40% {
+    clip-path: var(--slice-2);
+    transform: translate(-5px, 0px);
+  }
+  50% {
+    clip-path: var(--slice-3);
+    transform: translate(5px, 0px);
+  }
+  60% {
+    clip-path: var(--slice-4);
+    transform: translate(5px, 10px);
+  }
+  70% {
+    clip-path: var(--slice-2);
+    transform: translate(-10px, 10px);
+  }
+  80% {
+    clip-path: var(--slice-5);
+    transform: translate(20px, -10px);
+  }
+  90% {
+    clip-path: var(--slice-1);
+    transform: translate(-10px, 0px);
+  }
+  100% {
+    clip-path: var(--slice-1);
+    transform: translate(0);
+  }
+}
+
+@media (min-width: 768px) {
+  .button-49,
+  .button-49:after {
+    width: 500px;
+    height: 126px;
+    line-height: 88px;
+  }
+}
+
+.devSection {
+    height: 80vh;
+    margin-top: 300px;
+}
+
+.devInfo{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.devInfo h2{
+    font-size: 40px;
+    font-family: Poppins;
+}
+
+.devCard{
+    display: flex;
+    margin-top: 100px;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 100px;
+}
+
+.dev1, .dev2 {
+    height: 350px;
+    width: 300px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid transparent;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    padding: 20px;
+    font-family: Poppins;
+}
+
+.dev1 img {
+    border-radius: 50%;
+}
+
+.dev2 img {
+    border-radius: 50%;
+}
+
+.devSpan {
+    color: #f25353;
+    font-size: 15px;
+}
+

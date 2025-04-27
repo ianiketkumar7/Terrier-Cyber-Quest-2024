@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload & Paste Link</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            background-size: cover;
+            background-attachment: fixed;
+            color: white;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .input-group {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        input[type="file"], input[type="text"] {
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+            box-sizing: border-box;
+            color: #333;
+        }
+
+        input[type="file"] {
+            font-size: 14px; /* Change the font size for better visibility */
+            font-weight: bold; /* Make it bold to enhance visibility */
+            color: #333; /* Darker color for visibility */
+        }
+
+        button {
+            padding: 12px 30px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Additional styles for better aesthetics */
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Upload File or Paste Link</h1>
+
+        <div class="input-group">
+            <label for="fileInput">Upload a file:</label><br>
+            <input type="file" id="fileInput">
+        </div>
+
+        <div class="input-group">
+            <label for="linkInput">Paste a link:</label><br>
+            <input type="text" id="linkInput" placeholder="Enter URL here">
+        </div>
+
+        <div class="input-group">
+            <button onclick="handleSubmit()">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        async function handleSubmit() {
+    const fileInput = document.getElementById('fileInput').files[0];
+    const linkInput = document.getElementById('linkInput').value;
+
+    if (fileInput) {
+        const formData = new FormData();
+        formData.append('file', fileInput);
+
+        try {
+            const response = await fetch('http://192.168.2.139:5000/predict', {
+                method: 'POST',
+                body: formData
+            });
+
+            // Check if the response is ok (status 200)
+            if (!response.ok) {
+                throw new Error(`Server error: ${response.status}`);
+            }
+
+            const result = await response.json();  // Parse JSON response
+            alert('Prediction: ' + result.result);
+        } catch (error) {
+            alert('Error: ' + error.message);
+        }
+
+    } else if (linkInput) {
+        alert('URL submission is not implemented yet.');
+        // You can implement URL handling similarly by sending a JSON object to the API
+    } else {
+        alert('Please upload a file or paste a link!');
+    }
+}
+    </script>
+    
+
+</body>
+</html>

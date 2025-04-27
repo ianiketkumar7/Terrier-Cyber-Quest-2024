@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Try Now</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="tryNow.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tryNowScript.js" defer></script>
+</head>
+<body>
+    <div>
+        <section class="nav-section">
+            <div class="navbar">
+                <div class="links">
+                    <button class="close-button">
+                        <img class="image" src="remove.png" alt="" />
+                    </button>
+                    <hr />
+                    <a class="link-item" href="/index.html">Home</a>
+                    <a class="link-item" href="">Policies</a>
+                </div>
+                <div class="button">
+                    <button class="open-button">
+                        <img src="menu.png" width="60px" height="90px" alt="" />
+                    </button>
+                </div>
+            </div>
+            <div class="header">
+                <h1>TrueSight</h1>
+            </div>
+        </section>
+
+        <section class="TextSection">
+            <h1 class="text-center text-[80px]">Drop Your File or Link</h1>
+            <span>& Get Your Result</span>
+        </section>
+
+        <section class="uploaderSection">
+            <div class="uploadCard">
+                <div class="card1">
+                    <form id="file-form" class="form1" action="/upload" method="POST" enctype="multipart/form-data">
+                        <label for="file" class="label1">Upload a file (image/video):</label>
+                        <br>
+                        <input type="file" name="file" id="file" class="uploadFileButton" required>
+                        <br>
+                        <button type="submit" class="checkFileButton">Check File</button>
+                    </form>
+                </div>
+                <div class="card2">
+                    <form id="url-form" class="form2">
+                        <label for="url" class="label2">Enter URL:</label>
+                        <br>
+                        <input type="text" id="url" name="url" placeholder="Enter URL here" required>
+                        <br>
+                        <button type="button" onclick="checkURL()" class="checkFileButton">Check URL</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

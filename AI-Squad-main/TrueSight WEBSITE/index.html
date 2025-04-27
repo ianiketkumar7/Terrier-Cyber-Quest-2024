@@ -1,0 +1,84 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload & Paste Link</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Upload File or Paste Link</h1>
+
+        <div class="input-group">
+            <label for="fileInput">Upload a file:</label><br>
+            <input type="file" id="fileInput">
+        </div>
+
+        <div class="input-group">
+            <label for="linkInput">Paste a link:</label><br>
+            <input type="text" id="linkInput" placeholder="Enter URL here">
+        </div>
+
+        <div class="input-group">
+            <button onclick="handleSubmit()">Submit</button>
+        </div>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        async function handleSubmit() {
+            const fileInput = document.getElementById('fileInput').files[0];
+            const linkInput = document.getElementById('linkInput').value;
+            const resultDiv = document.getElementById('result');
+
+            // Clear previous results
+            resultDiv.innerHTML = '';
+
+            try {
+                if (fileInput) {
+                    const formData = new FormData();
+                    formData.append('file', fileInput);
+
+                    const response = await fetch('/detect', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    const data = await response.json();
+                    if (data.error) {
+                        resultDiv.innerHTML = `<p style="color:red;">Error: ${data.error}</p>`;
+                    } else {
+                        resultDiv.innerHTML = `<p>Result: ${data.result}</p><p>Confidence: ${(data.confidence * 100).toFixed(2)}%</p>`;
+                    }
+                } else if (linkInput) {
+                    const formData = new FormData();
+                    formData.append('link', linkInput);
+
+                    const response = await fetch('/detect', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    const data = await response.json();
+                    if (data.error) {
+                        resultDiv.innerHTML = `<p style="color:red;">Error: ${data.error}</p>`;
+                    } else {
+                        resultDiv.innerHTML = `<p>Result: ${data.result}</p><p>Confidence: ${(data.confidence * 100).toFixed(2)}%</p>`;
+                    }
+                } else {
+                    resultDiv.innerHTML = `<p style="color:red;">Please upload a file or paste a link!</p>`;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                resultDiv.innerHTML = `<p style="color:red;">An error occurred: ${error}</p>`;
+            }
+        }
+    </script>
+
+</body>
+</html>
+
